@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <title>Export</title>
+    <link 
+      rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <style>
+        [class*='container'] {
+          margin-top: 2.5rem;
+          max-width: 80rem;
+        }
+        [class*='row'] {
+          margin-top: 20px;
+        }
+        .centerItems {
+          margin-top: 1rem;
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+          <img class="mb-4" src="{% static 'App/svg/twitter.svg' %}" alt="" width="72" height="57">
+          <h2>Export results</h2>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="container centerItems">
+                <button class="w-40 btn btn-lg btn-primary" type="submit">Export .csv</button>
+            </div>
+        </form>
+        <br>
+        {% include "App/tabla.html" %}
+        {% block table %}
+
+        {% endblock %}
+    </div>
+    
+</body>
+</html>
