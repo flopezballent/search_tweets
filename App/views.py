@@ -55,6 +55,7 @@ def searchTweets(search_id):
         return True, filename, Tweets_df
     
     except:
+        print('no esta funcionando twint')
         return False, filename
 
 def home(request):
