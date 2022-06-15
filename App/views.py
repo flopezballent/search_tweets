@@ -29,6 +29,7 @@ def searchTweets(search_id):
         columns.append('photos')
     
     try:
+        print('ALMACENANDO EL .CSV...')
         c = twint.Config()
         c.Since = initial_date
         c.Search = keywords
@@ -40,7 +41,9 @@ def searchTweets(search_id):
         filename = keywords.replace(' ', '_')
         c.Output = f"App/exports/{filename}.csv"
         twint.run.Search(c)
-
+        print('SE ALMACENO EL .CSV!')
+        
+        print('CREANDO EL DF...')
         c = twint.Config()
         c.Since = initial_date
         c.Search = keywords
@@ -51,11 +54,11 @@ def searchTweets(search_id):
         twint.run.Search(c)
 
         Tweets_df = twint.storage.panda.Tweets_df
-
+        print('SE ALMACENO EL DF!')
         return True, filename, Tweets_df
     
     except:
-        print('no esta funcionando twint')
+        print('NO ESTA FUNCIONANDO TWINT!')
         return False, filename
 
 def home(request):
